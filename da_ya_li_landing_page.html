@@ -1,0 +1,649 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Da Ya Li (大鴨梨) - Peking Roast Duck & Chinese Fusion | Hawthorn East</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/js/all.min.js" crossorigin="anonymous"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700;800;900&family=Noto+Serif+SC:wght@400;600;700;900&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        imperialRed: '#8B0000',
+                        deepCrimson: '#660000',
+                        goldAccent: '#DFB15B',
+                        amberGlow: '#F5C563',
+                        darkCharcoal: '#121212',
+                        cardBg: '#1C1A1A',
+                        cardHover: '#262222',
+                    },
+                    fontFamily: {
+                        serifDisplay: ['Cinzel', 'Noto Serif SC', 'serif'],
+                        chinese: ['Noto Serif SC', 'serif'],
+                        sans: ['Plus Jakarta Sans', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        .gold-gradient-text {
+            background: linear-gradient(135deg, #FFF0C2 0%, #DFB15B 50%, #B8860B 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        .gold-border-glow {
+            box-shadow: 0 0 15px rgba(223, 177, 91, 0.2);
+        }
+        .gold-border-glow:hover {
+            box-shadow: 0 0 25px rgba(223, 177, 91, 0.4);
+        }
+        .hero-bg {
+            background: linear-gradient(to bottom, rgba(18, 18, 18, 0.65), rgba(18, 18, 18, 0.95)),
+                        url('https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?auto=format&fit=crop&w=2000&q=80') center/cover no-repeat;
+        }
+        .duck-bg {
+            background: linear-gradient(to right, rgba(18, 18, 18, 0.92), rgba(18, 18, 18, 0.75)),
+                        url('https://images.unsplash.com/photo-1563245372-f21724e3856d?auto=format&fit=crop&w=1600&q=80') center/cover no-repeat;
+        }
+    </style>
+</head>
+<body class="bg-darkCharcoal text-gray-200 font-sans antialiased selection:bg-goldAccent selection:text-black">
+
+    <header id="main-header" class="fixed top-0 left-0 right-0 z-50 transition-all duration-300 bg-darkCharcoal/90 backdrop-blur-md border-b border-goldAccent/20">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between h-20">
+                <!-- Logo -->
+                <a href="#" class="flex items-center gap-3 group">
+                    <div class="w-12 h-12 rounded-full border-2 border-goldAccent bg-imperialRed flex items-center justify-center shadow-lg group-hover:scale-105 transition-transform">
+                        <span class="font-chinese font-bold text-xl text-goldAccent">鴨</span>
+                    </div>
+                    <div>
+                        <div class="font-serifDisplay font-bold text-xl tracking-wider gold-gradient-text">DA YA LI</div>
+                        <div class="font-chinese text-xs text-goldAccent/80 tracking-widest">大鴨梨 · 京城融合菜</div>
+                    </div>
+                </a>
+
+                <!-- Desktop Nav -->
+                <nav class="hidden md:flex items-center space-x-8 text-sm font-medium">
+                    <a href="#about" class="text-gray-300 hover:text-goldAccent transition-colors">About Us</a>
+                    <a href="#signature" class="text-gray-300 hover:text-goldAccent transition-colors">Roast Duck</a>
+                    <a href="#menu" class="text-gray-300 hover:text-goldAccent transition-colors">Full Menu</a>
+                    <a href="#membership" class="text-gray-300 hover:text-goldAccent transition-colors">VIP Benefits</a>
+                    <a href="#contact" class="text-gray-300 hover:text-goldAccent transition-colors">Location</a>
+                </nav>
+
+                <!-- Header Actions -->
+                <div class="hidden sm:flex items-center gap-4">
+                    <button onclick="toggleOrderCart()" class="relative p-2.5 rounded-full bg-cardBg border border-goldAccent/30 text-goldAccent hover:border-goldAccent transition-colors">
+                        <i class="fa-solid fa-utensils text-lg"></i>
+                        <span id="cart-badge" class="absolute -top-1 -right-1 bg-imperialRed text-white text-xs w-5 h-5 rounded-full flex items-center justify-center font-bold">0</span>
+                    </button>
+                    <a href="#reservation" class="px-5 py-2.5 rounded-full bg-gradient-to-r from-imperialRed to-deepCrimson text-goldAccent border border-goldAccent/40 font-medium hover:brightness-110 shadow-lg transition-all text-sm">
+                        Book a Table
+                    </a>
+                </div>
+
+                <!-- Mobile Menu Button -->
+                <div class="flex sm:hidden items-center gap-3">
+                    <button onclick="toggleOrderCart()" class="relative p-2 rounded-full bg-cardBg border border-goldAccent/30 text-goldAccent">
+                        <i class="fa-solid fa-utensils text-base"></i>
+                        <span id="cart-badge-mobile" class="absolute -top-1 -right-1 bg-imperialRed text-white text-xs w-4 h-4 rounded-full flex items-center justify-center text-[10px] font-bold">0</span>
+                    </button>
+                    <button id="mobile-menu-btn" onclick="toggleMobileNav()" class="text-gray-300 hover:text-goldAccent p-2">
+                        <i class="fa-solid fa-bars text-2xl"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Mobile Drawer -->
+        <div id="mobile-nav" class="hidden md:hidden bg-darkCharcoal/95 border-b border-goldAccent/20 px-4 pt-2 pb-6 space-y-3 text-center">
+            <a href="#about" onclick="toggleMobileNav()" class="block py-2 text-gray-300 hover:text-goldAccent">About Us</a>
+            <a href="#signature" onclick="toggleMobileNav()" class="block py-2 text-gray-300 hover:text-goldAccent">Roast Duck</a>
+            <a href="#menu" onclick="toggleMobileNav()" class="block py-2 text-gray-300 hover:text-goldAccent">Full Menu</a>
+            <a href="#membership" onclick="toggleMobileNav()" class="block py-2 text-gray-300 hover:text-goldAccent">VIP Benefits</a>
+            <a href="#contact" onclick="toggleMobileNav()" class="block py-2 text-gray-300 hover:text-goldAccent">Location & Hours</a>
+            <a href="#reservation" onclick="toggleMobileNav()" class="inline-block mt-2 px-6 py-2.5 rounded-full bg-gradient-to-r from-imperialRed to-deepCrimson text-goldAccent border border-goldAccent/40 text-sm font-semibold">
+                Book a Table
+            </a>
+        </div>
+    </header>
+
+    <section class="relative hero-bg min-h-screen flex items-center justify-center pt-24 pb-16 px-4">
+        <div class="max-w-4xl mx-auto text-center space-y-8">
+            <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-goldAccent/40 bg-black/50 text-goldAccent text-xs sm:text-sm tracking-wider uppercase backdrop-blur-md">
+                <i class="fa-solid fa-crown text-amberGlow"></i> Hawthorn East · Melbourne
+            </div>
+
+            <h1 class="text-4xl sm:text-6xl lg:text-7xl font-serifDisplay font-bold tracking-tight text-white leading-tight">
+                Traditional Beijing Roast Duck & <span class="gold-gradient-text">Imperial Fusion</span>
+            </h1>
+
+            <p class="font-chinese text-xl sm:text-2xl text-amberGlow/90 tracking-widest font-light">
+                美好生活 · 人间至味
+            </p>
+
+            <p class="max-w-2xl mx-auto text-gray-300 text-base sm:text-lg leading-relaxed font-light">
+                Experience legendary heritage flavors curated with imperial culinary techniques. Serving Hawthorn East with authentic Beijing Roast Duck and exquisite modern fusion dishes.
+            </p>
+
+            <div class="flex flex-col sm:flex-row items-center justify-center gap-4 pt-4">
+                <a href="#menu" class="w-full sm:w-auto px-8 py-3.5 rounded-full bg-goldAccent text-black font-semibold hover:bg-amberGlow shadow-lg shadow-goldAccent/20 transition-all flex items-center justify-center gap-2">
+                    <i class="fa-solid fa-book-open"></i> Explore Menu
+                </a>
+                <a href="#reservation" class="w-full sm:w-auto px-8 py-3.5 rounded-full bg-imperialRed/80 hover:bg-imperialRed text-goldAccent border border-goldAccent/50 font-semibold backdrop-blur-md transition-all flex items-center justify-center gap-2">
+                    <i class="fa-solid fa-calendar-check"></i> Reserve Table
+                </a>
+            </div>
+
+            <!-- Quick Info Ribbon -->
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-4 pt-12 text-left border-t border-goldAccent/20 max-w-3xl mx-auto">
+                <div class="p-3 rounded-lg bg-cardBg/60 border border-white/5">
+                    <div class="text-xs text-gray-400">Location</div>
+                    <div class="text-sm font-semibold text-goldAccent truncate">169 Camberwell Rd</div>
+                </div>
+                <div class="p-3 rounded-lg bg-cardBg/60 border border-white/5">
+                    <div class="text-xs text-gray-400">Phone</div>
+                    <div class="text-sm font-semibold text-goldAccent">0457 256 190</div>
+                </div>
+                <div class="p-3 rounded-lg bg-cardBg/60 border border-white/5">
+                    <div class="text-xs text-gray-400">Member Perks</div>
+                    <div class="text-sm font-semibold text-goldAccent">Exclusive Discounts</div>
+                </div>
+                <div class="p-3 rounded-lg bg-cardBg/60 border border-white/5">
+                    <div class="text-xs text-gray-400">Eco-Initiative</div>
+                    <div class="text-sm font-semibold text-goldAccent">光盘行动 Campaign</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="signature" class="py-20 px-4 duck-bg border-y border-goldAccent/20 relative overflow-hidden">
+        <div class="max-w-7xl mx-auto grid lg:grid-cols-2 gap-12 items-center">
+            <div class="space-y-6">
+                <div class="inline-block px-3 py-1 rounded bg-imperialRed/40 border border-goldAccent/30 text-goldAccent text-xs font-semibold uppercase tracking-widest">
+                    House Specialty · 招牌必点
+                </div>
+                <h2 class="text-3xl sm:text-5xl font-serifDisplay font-bold text-white">
+                    Traditional Beijing Roast Duck <br><span class="font-chinese text-2xl sm:text-4xl gold-gradient-text">老北京传统烤鸭</span>
+                </h2>
+                <p class="text-gray-300 leading-relaxed text-sm sm:text-base">
+                    Carved fresh table-side with crispy glistening skin and tender flavorful meat. Served with warm handcrafted duck pancakes, signature sweet bean sauce, crisp cucumber batons, and shredded leeks.
+                </p>
+                
+                <!-- Pricing Card Spotlight -->
+                <div class="p-6 rounded-xl bg-cardBg/90 border border-goldAccent/30 space-y-4">
+                    <div class="flex justify-between items-center pb-4 border-b border-white/10">
+                        <div>
+                            <div class="font-bold text-white text-lg">Whole Roast Duck (整只)</div>
+                            <div class="text-xs text-gray-400">Includes slicing service & duck rack options</div>
+                        </div>
+                        <div class="text-right">
+                            <div class="text-xs text-gray-400 line-through">$72.80</div>
+                            <div class="text-2xl font-bold text-goldAccent">$69.80 <span class="text-xs text-imperialRed bg-goldAccent/20 px-2 py-0.5 rounded font-normal">VIP Price</span></div>
+                        </div>
+                    </div>
+                    
+                    <div class="flex justify-between items-center">
+                        <div>
+                            <div class="font-bold text-white text-base">Half Roast Duck (半只)</div>
+                            <div class="text-xs text-gray-400">Ideal for 2 diners</div>
+                        </div>
+                        <div class="text-right">
+                            <div class="text-xs text-gray-400 line-through">$41.80</div>
+                            <div class="text-xl font-bold text-goldAccent">$39.80 <span class="text-xs text-imperialRed bg-goldAccent/20 px-2 py-0.5 rounded font-normal">VIP Price</span></div>
+                        </div>
+                    </div>
+
+                    <div class="pt-2 flex flex-wrap gap-2">
+                        <button onclick="addToCart('Traditional Beijing Roast Duck (Whole)', 72.80, 69.80)" class="flex-1 py-2.5 rounded-lg bg-imperialRed hover:bg-deepCrimson text-goldAccent font-semibold text-xs transition-colors border border-goldAccent/30">
+                            + Add Whole Duck
+                        </button>
+                        <button onclick="addToCart('Traditional Beijing Roast Duck (Half)', 41.80, 39.80)" class="flex-1 py-2.5 rounded-lg bg-cardHover hover:bg-black text-gray-200 font-semibold text-xs transition-colors border border-white/10">
+                            + Add Half Duck
+                        </button>
+                    </div>
+                </div>
+
+                <div class="grid grid-cols-2 gap-4 text-xs text-gray-300">
+                    <div class="flex items-center gap-2">
+                        <i class="fa-solid fa-circle-check text-goldAccent"></i> Extra Pancakes ($6.80 / Member $5.80)
+                    </div>
+                    <div class="flex items-center gap-2">
+                        <i class="fa-solid fa-circle-check text-goldAccent"></i> Duck Condiments ($6.80 / Member $5.80)
+                    </div>
+                    <div class="flex items-center gap-2">
+                        <i class="fa-solid fa-circle-check text-goldAccent"></i> Salt & Pepper Rack ($11.80 / $10.80)
+                    </div>
+                    <div class="flex items-center gap-2">
+                        <i class="fa-solid fa-circle-check text-goldAccent"></i> Duck Rack Tofu Soup ($11.80 / $10.80)
+                    </div>
+                </div>
+            </div>
+
+            <!-- Image Mosaic -->
+            <div class="relative grid grid-cols-2 gap-4">
+                <img src="https://images.unsplash.com/photo-1514933651103-005eec06c04b?auto=format&fit=crop&w=800&q=80" alt="Crispy Peking Roast Duck" class="rounded-2xl border border-goldAccent/30 shadow-2xl object-cover h-64 sm:h-80 w-full">
+                <img src="https://images.unsplash.com/photo-1541544741938-0af808871cc0?auto=format&fit=crop&w=800&q=80" alt="Authentic Duck Pancakes" class="rounded-2xl border border-goldAccent/30 shadow-2xl object-cover h-64 sm:h-80 w-full mt-8">
+            </div>
+        </div>
+    </section>
+
+    <section id="menu" class="py-20 px-4 max-w-7xl mx-auto">
+        <div class="text-center space-y-3 mb-12">
+            <div class="text-goldAccent text-xs uppercase tracking-widest font-semibold">Curated Delicacies</div>
+            <h2 class="text-3xl sm:text-5xl font-serifDisplay font-bold text-white">Interactive Menu</h2>
+            <p class="text-gray-400 max-w-xl mx-auto text-sm">Explore our imperial menu items, member prices, and dietary indications. Click items to add to your sample bill estimator.</p>
+        </div>
+
+        <!-- Tab Buttons -->
+        <div class="flex flex-wrap justify-center gap-2 sm:gap-4 mb-10">
+            <button onclick="switchTab('duck')" id="tab-duck" class="menu-tab px-5 py-2.5 rounded-full text-sm font-semibold border border-goldAccent bg-imperialRed text-goldAccent transition-all">
+                招牌烤鸭 Signature Duck
+            </button>
+            <button onclick="switchTab('cold')" id="tab-cold" class="menu-tab px-5 py-2.5 rounded-full text-sm font-semibold border border-white/10 bg-cardBg text-gray-400 hover:text-white transition-all">
+                凉菜篇 Cold Starters
+            </button>
+            <button onclick="switchTab('hot')" id="tab-hot" class="menu-tab px-5 py-2.5 rounded-full text-sm font-semibold border border-white/10 bg-cardBg text-gray-400 hover:text-white transition-all">
+                人气热菜 Chef Recommendations
+            </button>
+            <button onclick="switchTab('desserts')" id="tab-desserts" class="menu-tab px-5 py-2.5 rounded-full text-sm font-semibold border border-white/10 bg-cardBg text-gray-400 hover:text-white transition-all">
+                主食甜品 Staples & Desserts
+            </button>
+        </div>
+
+        <!-- Menu Grid Display -->
+        <div id="menu-container" class="grid md:grid-cols-2 gap-6">
+            <!-- Dynamic JS Injected Items Here -->
+        </div>
+    </section>
+
+    <section id="membership" class="py-16 px-4 bg-gradient-to-b from-darkCharcoal via-deepCrimson/30 to-darkCharcoal border-y border-goldAccent/20">
+        <div class="max-w-5xl mx-auto rounded-3xl bg-cardBg border border-goldAccent/40 p-8 sm:p-12 relative overflow-hidden shadow-2xl">
+            <div class="absolute -right-12 -top-12 w-40 h-40 bg-goldAccent/10 rounded-full blur-3xl pointer-events-none"></div>
+            
+            <div class="grid lg:grid-cols-3 gap-8 items-center">
+                <div class="lg:col-span-2 space-y-4">
+                    <span class="px-3 py-1 rounded-full bg-goldAccent text-black text-xs font-bold tracking-wider uppercase">Exclusive Membership</span>
+                    <h3 class="text-2xl sm:text-4xl font-serifDisplay font-bold text-white">Join the Da Ya Li VIP Loyalty Club</h3>
+                    <p class="text-gray-300 text-sm leading-relaxed">
+                        Unlock instant member pricing on every dish on our menu! Enjoy priority reservations, birthday specials, and member-only culinary previews.
+                    </p>
+                    <div class="flex flex-wrap gap-4 text-xs text-goldAccent font-medium pt-2">
+                        <div class="flex items-center gap-1.5"><i class="fa-solid fa-tag"></i> Member Discounts on All Menu Categories</div>
+                        <div class="flex items-center gap-1.5"><i class="fa-solid fa-leaf"></i> "No Leftover Campaign" Support (光盘行动)</div>
+                    </div>
+                </div>
+
+                <div class="bg-black/40 p-6 rounded-2xl border border-goldAccent/30 text-center space-y-4">
+                    <div class="text-lg font-bold text-white">Instant VIP Signup</div>
+                    <p class="text-xs text-gray-400">Ask our staff during your visit to register your phone number for instant savings.</p>
+                    <button onclick="document.getElementById('reservation').scrollIntoView();" class="w-full py-3 rounded-full bg-goldAccent text-black font-bold text-xs uppercase tracking-wider hover:bg-amberGlow transition-colors">
+                        Book & Become Member
+                    </button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="reservation" class="py-20 px-4 max-w-4xl mx-auto">
+        <div class="bg-cardBg rounded-3xl border border-goldAccent/30 p-8 sm:p-12 shadow-2xl">
+            <div class="text-center space-y-3 mb-8">
+                <div class="text-goldAccent text-xs uppercase tracking-widest font-semibold">Table Booking</div>
+                <h2 class="text-3xl sm:text-4xl font-serifDisplay font-bold text-white">Reserve Your Dining Experience</h2>
+                <p class="text-gray-400 text-xs sm:text-sm">Please book ahead for Beijing Roast Duck to ensure optimal preparation time.</p>
+            </div>
+
+            <form id="bookingForm" onsubmit="handleReservation(event)" class="space-y-6">
+                <div class="grid sm:grid-cols-2 gap-6">
+                    <div>
+                        <label class="block text-xs font-semibold text-gray-300 mb-2">Full Name *</label>
+                        <input type="text" required placeholder="e.g. John Smith" class="w-full bg-black/50 border border-white/10 rounded-xl px-4 py-3 text-sm text-white focus:outline-none focus:border-goldAccent">
+                    </div>
+                    <div>
+                        <label class="block text-xs font-semibold text-gray-300 mb-2">Phone Number *</label>
+                        <input type="tel" required placeholder="04XX XXX XXX" class="w-full bg-black/50 border border-white/10 rounded-xl px-4 py-3 text-sm text-white focus:outline-none focus:border-goldAccent">
+                    </div>
+                </div>
+
+                <div class="grid sm:grid-cols-3 gap-6">
+                    <div>
+                        <label class="block text-xs font-semibold text-gray-300 mb-2">Number of Guests *</label>
+                        <select required class="w-full bg-black/50 border border-white/10 rounded-xl px-4 py-3 text-sm text-white focus:outline-none focus:border-goldAccent">
+                            <option value="1">1 Person</option>
+                            <option value="2" selected>2 Guests</option>
+                            <option value="4">4 Guests</option>
+                            <option value="6">6 Guests</option>
+                            <option value="8+">8+ Large Group</option>
+                        </select>
+                    </div>
+                    <div>
+                        <label class="block text-xs font-semibold text-gray-300 mb-2">Date *</label>
+                        <input type="date" required class="w-full bg-black/50 border border-white/10 rounded-xl px-4 py-3 text-sm text-white focus:outline-none focus:border-goldAccent">
+                    </div>
+                    <div>
+                        <label class="block text-xs font-semibold text-gray-300 mb-2">Time *</label>
+                        <select required class="w-full bg-black/50 border border-white/10 rounded-xl px-4 py-3 text-sm text-white focus:outline-none focus:border-goldAccent">
+                            <option>11:30 AM (Lunch)</option>
+                            <option>12:30 PM (Lunch)</option>
+                            <option>05:30 PM (Dinner)</option>
+                            <option>06:45 PM (Dinner)</option>
+                            <option>08:00 PM (Dinner)</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div>
+                    <label class="block text-xs font-semibold text-gray-300 mb-2">Special Requests / Roast Duck Pre-Order</label>
+                    <textarea rows="3" placeholder="Let us know dietary requirements or if you wish to reserve a whole duck in advance..." class="w-full bg-black/50 border border-white/10 rounded-xl px-4 py-3 text-sm text-white focus:outline-none focus:border-goldAccent"></textarea>
+                </div>
+
+                <button type="submit" class="w-full py-4 rounded-xl bg-gradient-to-r from-imperialRed to-deepCrimson border border-goldAccent/40 text-goldAccent font-bold text-sm hover:brightness-110 transition-all shadow-lg">
+                    Confirm Reservation Request
+                </button>
+            </form>
+        </div>
+    </section>
+
+    <footer id="contact" class="bg-black border-t border-goldAccent/20 pt-16 pb-12 text-gray-400 text-sm">
+        <div class="max-w-7xl mx-auto px-4 grid md:grid-cols-3 gap-10 pb-12 border-b border-white/10">
+            <!-- Info Column 1 -->
+            <div class="space-y-4">
+                <div class="flex items-center gap-3">
+                    <div class="w-10 h-10 rounded-full border border-goldAccent bg-imperialRed flex items-center justify-center font-chinese font-bold text-goldAccent">
+                        鴨
+                    </div>
+                    <div>
+                        <div class="font-serifDisplay font-bold text-lg text-white">Da Ya Li (大鴨梨)</div>
+                        <div class="text-xs text-goldAccent font-chinese">京城融合菜 · Peking Duck & Fusion</div>
+                    </div>
+                </div>
+                <p class="text-xs text-gray-400 leading-relaxed">
+                    Dedicated to providing Hawthorn East and Melbourne food lovers with authentic imperial flavors, traditional roast duck craftsmanship, and warm hospitality.
+                </p>
+                <div class="text-xs text-goldAccent font-chinese">
+                    美好生活 · 人间至味
+                </div>
+            </div>
+
+            <!-- Info Column 2: Hours & Location -->
+            <div class="space-y-3">
+                <div class="font-semibold text-white uppercase tracking-wider text-xs">Address & Hours</div>
+                <div class="flex items-start gap-2.5 text-xs text-gray-300">
+                    <i class="fa-solid fa-location-dot text-goldAccent mt-0.5"></i>
+                    <span>169 Camberwell Rd, Hawthorn East, VIC 3123</span>
+                </div>
+                <div class="flex items-center gap-2.5 text-xs text-gray-300">
+                    <i class="fa-solid fa-phone text-goldAccent"></i>
+                    <a href="tel:0457256190" class="hover:text-goldAccent">0457 256 190</a>
+                </div>
+                <div class="flex items-start gap-2.5 text-xs text-gray-300">
+                    <i class="fa-solid fa-clock text-goldAccent mt-0.5"></i>
+                    <div>
+                        <div>Mon - Sun: 11:00 AM – 2:00 PM</div>
+                        <div>Mon - Sun: 5:00 PM – 9:00 PM</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Info Column 3: Navigation & Map Link -->
+            <div class="space-y-4">
+                <div class="font-semibold text-white uppercase tracking-wider text-xs">Directions & Map</div>
+                <p class="text-xs text-gray-400">Conveniently located in Hawthorn East near Camberwell Junction.</p>
+                <a href="https://maps.google.com/?cid=7232697258237814130" target="_blank" class="inline-flex items-center gap-2 px-4 py-2.5 rounded-xl bg-cardBg border border-goldAccent/30 text-goldAccent text-xs hover:border-goldAccent transition-colors">
+                    <i class="fa-solid fa-map-location-dot"></i> Open in Google Maps
+                </a>
+            </div>
+        </div>
+
+        <div class="max-w-7xl mx-auto px-4 pt-8 flex flex-col sm:flex-row items-center justify-between text-xs text-gray-500 gap-4">
+            <div>© 2026 Da Ya Li (大鴨梨) Hawthorn East. All rights reserved.</div>
+            <div class="flex gap-4">
+                <span class="hover:text-goldAccent cursor-pointer">Terms & Conditions</span>
+                <span class="hover:text-goldAccent cursor-pointer">Privacy Policy</span>
+                <span class="hover:text-goldAccent cursor-pointer">Allergen Disclaimer</span>
+            </div>
+        </div>
+    </footer>
+
+    <div id="cart-drawer" class="fixed inset-y-0 right-0 w-full sm:w-96 bg-cardBg border-l border-goldAccent/30 z-50 transform translate-x-full transition-transform duration-300 flex flex-col shadow-2xl">
+        <div class="p-6 border-b border-white/10 flex items-center justify-between">
+            <div class="flex items-center gap-2">
+                <i class="fa-solid fa-receipt text-goldAccent"></i>
+                <h3 class="font-bold text-white text-base">Estimated Order Calculator</h3>
+            </div>
+            <button onclick="toggleOrderCart()" class="text-gray-400 hover:text-white p-1">
+                <i class="fa-solid fa-xmark text-xl"></i>
+            </button>
+        </div>
+
+        <div id="cart-items-list" class="flex-1 overflow-y-auto p-6 space-y-4">
+            <div class="text-center text-gray-500 py-12 text-sm">
+                Your order estimator is empty.<br>Click "+ Add" on any dish to estimate prices.
+            </div>
+        </div>
+
+        <div class="p-6 border-t border-white/10 bg-black/40 space-y-4">
+            <div class="space-y-2 text-sm">
+                <div class="flex justify-between text-gray-400">
+                    <span>Standard Price Total:</span>
+                    <span id="cart-standard-total">$0.00</span>
+                </div>
+                <div class="flex justify-between text-goldAccent font-bold text-base">
+                    <span>VIP Member Total:</span>
+                    <span id="cart-member-total">$0.00</span>
+                </div>
+                <div class="flex justify-between text-xs text-imperialRed bg-goldAccent/10 p-2 rounded border border-goldAccent/20">
+                    <span>Total Member Savings:</span>
+                    <span id="cart-savings" class="font-bold">$0.00</span>
+                </div>
+            </div>
+
+            <button onclick="submitDemoOrder()" class="w-full py-3 rounded-xl bg-goldAccent text-black font-bold text-xs uppercase tracking-wider hover:bg-amberGlow transition-colors">
+                Reserve Table With Selected Menu
+            </button>
+        </div>
+    </div>
+
+    <script>
+        // Menu Dataset
+        const menuData = {
+            duck: [
+                { id: 'd1', ch: '老北京传统烤鸭 (整只)', en: 'Traditional Beijing Roast Duck (Whole)', std: 72.80, mem: 69.80, desc: 'Served with 2 packs of pancakes, duck condiments, leeks and cucumber.', spiciness: 0, allergens: ['Gluten', 'Sesame'] },
+                { id: 'd2', ch: '老北京传统烤鸭 (半只)', en: 'Traditional Beijing Roast Duck (Half)', std: 41.80, mem: 39.80, desc: 'Served with 1 pack of pancakes and condiments.', spiciness: 0, allergens: ['Gluten', 'Sesame'] },
+                { id: 'd3', ch: '手工烤鸭饼', en: 'Extra Duck Pancakes', std: 6.80, mem: 5.80, desc: 'Warm handcrafted thin pancakes (10 pcs).', spiciness: 0, allergens: ['Gluten'] },
+                { id: 'd4', ch: '烤鸭酱料小菜', en: 'Extra Duck Condiments & Sauce', std: 6.80, mem: 5.80, desc: 'Special sweet bean sauce, cucumber sticks, and shredded leeks.', spiciness: 0, allergens: [] },
+                { id: 'd5', ch: '椒盐鸭架', en: 'Salt & Pepper Duck Rack', std: 11.80, mem: 10.80, desc: 'Crispy seasoned duck frame tossed with salt, pepper, and fresh chili.', spiciness: 1, allergens: [] },
+                { id: 'd6', ch: '鸭架豆腐汤', en: 'Duck Rack Tofu Soup', std: 11.80, mem: 10.80, desc: 'Rich milky duck bone broth simmered with tender tofu cubes.', spiciness: 0, allergens: ['Soy'] }
+            ],
+            cold: [
+                { id: 'c1', ch: '鸭梨特制烧鸡', en: 'Special Roasted Chicken', std: 17.80, mem: 15.80, desc: 'Chef specially marinated aromatic roast cold chicken.', spiciness: 0, allergens: ['Soy'] },
+                { id: 'c2', ch: '酱香牛肉', en: 'Sliced Beef in Savory Sauce', std: 20.80, mem: 18.80, desc: 'Thinly sliced braised beef shank in imperial spice brine.', spiciness: 0, allergens: ['Soy'] },
+                { id: 'c3', ch: '乾隆白菜', en: 'Imperial Qianlong Cabbage', std: 12.80, mem: 10.80, desc: 'Crisp Chinese cabbage tossed in signature rich sesame paste dressing.', spiciness: 0, allergens: ['Sesame'] },
+                { id: 'c4', ch: '东北大拉皮', en: 'Northeast-Style Jelly Noodles', std: 14.80, mem: 12.80, desc: 'Clear glass noodles with shredded vegetables and savory sesame chili oil.', spiciness: 1, allergens: ['Sesame'] }
+            ],
+            hot: [
+                { id: 'h1', ch: '生鱼头泡饼', en: 'Fish Head Stewed with Crispy Dough Sticks', std: 42.80, mem: 39.80, desc: 'Signature rich savory fish head gravy served with crispy flatbread.', spiciness: 1, allergens: ['Fish', 'Gluten'] },
+                { id: 'h2', ch: '水煮鱼片', en: 'Sichuan Boiled Fish Fillets in Spicy Oil', std: 41.80, mem: 38.80, desc: 'Tender fish fillets swimming in aromatic spicy chili oil broth.', spiciness: 3, allergens: ['Fish'] },
+                { id: 'h3', ch: '京味烤羊肉', en: 'Imperial Beijing-Style Crispy Roast Lamb', std: 32.80, mem: 28.80, desc: 'Fragrant sliced lamb wok-fried with cumin, coriander, and scallions.', spiciness: 1, allergens: [] },
+                { id: 'h4', ch: '宫保大虾球', en: 'Kung Pao King Prawns', std: 32.80, mem: 28.80, desc: 'Plump king prawns in sweet, tangy, and mildly spicy sauce with peanuts.', spiciness: 1, allergens: ['Shellfish', 'Peanuts'] },
+                { id: 'h5', ch: '鲍鱼红烧肉', en: 'Braised Pork Belly with Abalone', std: 52.80, mem: 48.80, desc: 'Luxurious braised succulent pork belly and whole abalones in dark sauce.', spiciness: 0, allergens: ['Molluscs', 'Soy'] },
+                { id: 'h6', ch: '生煲海鲈鱼', en: 'Clay Pot Baked Sea Bass', std: 42.80, mem: 39.80, desc: 'Fresh sea bass baked in clay pot with garlic cloves and ginger.', spiciness: 0, allergens: ['Fish'] }
+            ],
+            desserts: [
+                { id: 's1', ch: '老北京炸酱面', en: 'Old Beijing Noodles with Soybean Paste', std: 17.80, mem: 15.80, desc: 'Handcrafted noodles with savory fried pork soybean sauce & cucumber.', spiciness: 0, allergens: ['Gluten', 'Soy'] },
+                { id: 's2', ch: '宫廷点心拼盘', en: 'Imperial Beijing Pastry Selection', std: 21.80, mem: 19.80, desc: 'Assorted traditional Royal Beijing delicacies (Pea cake, rolling donkey).', spiciness: 0, allergens: ['Gluten', 'Sesame'] },
+                { id: 's3', ch: '紫铜壶小吊梨汤', en: 'Traditional Pear Soup in Copper Pot', std: 17.80, mem: 15.80, desc: 'Soothing warm snow pear, tremella, and wolfberry dessert soup.', spiciness: 0, allergens: [] },
+                { id: 's4', ch: '金梨酥', en: 'Golden Pear-Shaped Pastry (Per Piece)', std: 6.80, mem: 5.80, desc: 'Cute golden pear shaped crispy pastry filled with sweet lotus paste.', spiciness: 0, allergens: ['Gluten'] }
+            ]
+        };
+
+        let cart = [];
+
+        function switchTab(tabKey) {
+            document.querySelectorAll('.menu-tab').forEach(btn => {
+                btn.classList.remove('bg-imperialRed', 'text-goldAccent', 'border-goldAccent');
+                btn.classList.add('bg-cardBg', 'text-gray-400', 'border-white/10');
+            });
+
+            const activeBtn = document.getElementById(`tab-${tabKey}`);
+            if (activeBtn) {
+                activeBtn.classList.remove('bg-cardBg', 'text-gray-400', 'border-white/10');
+                activeBtn.classList.add('bg-imperialRed', 'text-goldAccent', 'border-goldAccent');
+            }
+
+            renderMenuCategory(tabKey);
+        }
+
+        function renderMenuCategory(category) {
+            const container = document.getElementById('menu-container');
+            container.innerHTML = '';
+
+            const items = menuData[category] || [];
+            items.forEach(item => {
+                let spiceIcons = '';
+                for (let i = 0; i < item.spiciness; i++) {
+                    spiceIcons += '<i class="fa-solid fa-pepper-hot text-red-500 text-xs ml-1" title="Spicy"></i>';
+                }
+
+                const cardHtml = `
+                    <div class="bg-cardBg border border-white/10 rounded-2xl p-6 flex flex-col justify-between hover:border-goldAccent/40 transition-all group hover:bg-cardHover">
+                        <div class="space-y-2">
+                            <div class="flex justify-between items-start gap-4">
+                                <div>
+                                    <h4 class="font-bold text-white text-lg group-hover:text-goldAccent transition-colors">
+                                        ${item.en}
+                                    </h4>
+                                    <div class="font-chinese text-sm text-goldAccent/80">
+                                        ${item.ch} ${spiceIcons}
+                                    </div>
+                                </div>
+                                <div class="text-right shrink-0">
+                                    <div class="text-xs text-gray-400 line-through">$${item.std.toFixed(2)}</div>
+                                    <div class="text-xl font-bold text-goldAccent">$${item.mem.toFixed(2)}</div>
+                                    <div class="text-[10px] text-imperialRed font-semibold bg-goldAccent/20 px-1.5 py-0.5 rounded">VIP</div>
+                                </div>
+                            </div>
+                            <p class="text-xs text-gray-400 leading-relaxed pt-1">
+                                ${item.desc}
+                            </p>
+                        </div>
+
+                        <div class="pt-4 border-t border-white/5 mt-4 flex items-center justify-between">
+                            <div class="text-[11px] text-gray-500 flex items-center gap-1">
+                                ${item.allergens.length > 0 ? `<i class="fa-solid fa-circle-info"></i> ${item.allergens.join(', ')}` : 'Gluten Free Option Available'}
+                            </div>
+                            <button onclick="addToCart('${item.en.replace(/'/g, "\\'")}', ${item.std}, ${item.mem})" 
+                                class="px-4 py-1.5 rounded-lg bg-black border border-goldAccent/30 text-goldAccent hover:bg-goldAccent hover:text-black text-xs font-semibold transition-all">
+                                + Add to Order
+                            </button>
+                        </div>
+                    </div>
+                `;
+                container.innerHTML += cardHtml;
+            });
+        }
+
+        function addToCart(name, stdPrice, memPrice) {
+            const existing = cart.find(i => i.name === name);
+            if (existing) {
+                existing.qty++;
+            } else {
+                cart.push({ name, stdPrice, memPrice, qty: 1 });
+            }
+            updateCartUI();
+        }
+
+        function updateCartUI() {
+            const list = document.getElementById('cart-items-list');
+            const cartBadge = document.getElementById('cart-badge');
+            const cartBadgeMobile = document.getElementById('cart-badge-mobile');
+
+            const totalQty = cart.reduce((sum, item) => sum + item.qty, 0);
+            cartBadge.innerText = totalQty;
+            cartBadgeMobile.innerText = totalQty;
+
+            if (cart.length === 0) {
+                list.innerHTML = `<div class="text-center text-gray-500 py-12 text-sm">Your order estimator is empty.<br>Click "+ Add" on any dish to estimate prices.</div>`;
+                document.getElementById('cart-standard-total').innerText = '$0.00';
+                document.getElementById('cart-member-total').innerText = '$0.00';
+                document.getElementById('cart-savings').innerText = '$0.00';
+                return;
+            }
+
+            list.innerHTML = '';
+            let stdTotal = 0;
+            let memTotal = 0;
+
+            cart.forEach((item, index) => {
+                stdTotal += item.stdPrice * item.qty;
+                memTotal += item.memPrice * item.qty;
+
+                list.innerHTML += `
+                    <div class="flex items-center justify-between p-3 rounded-xl bg-black/40 border border-white/5 text-xs">
+                        <div class="pr-2">
+                            <div class="font-semibold text-white">${item.name}</div>
+                            <div class="text-gray-400">$${item.memPrice.toFixed(2)} member price</div>
+                        </div>
+                        <div class="flex items-center gap-2">
+                            <button onclick="adjustQty(${index}, -1)" class="w-6 h-6 rounded bg-cardBg border border-white/20 text-white flex items-center justify-center">-</button>
+                            <span class="text-goldAccent font-bold">${item.qty}</span>
+                            <button onclick="adjustQty(${index}, 1)" class="w-6 h-6 rounded bg-cardBg border border-white/20 text-white flex items-center justify-center">+</button>
+                        </div>
+                    </div>
+                `;
+            });
+
+            const savings = stdTotal - memTotal;
+            document.getElementById('cart-standard-total').innerText = `$${stdTotal.toFixed(2)}`;
+            document.getElementById('cart-member-total').innerText = `$${memTotal.toFixed(2)}`;
+            document.getElementById('cart-savings').innerText = `$${savings.toFixed(2)}`;
+        }
+
+        function adjustQty(index, change) {
+            cart[index].qty += change;
+            if (cart[index].qty <= 0) {
+                cart.splice(index, 1);
+            }
+            updateCartUI();
+        }
+
+        function toggleOrderCart() {
+            const drawer = document.getElementById('cart-drawer');
+            drawer.classList.toggle('translate-x-full');
+        }
+
+        function toggleMobileNav() {
+            const nav = document.getElementById('mobile-nav');
+            nav.classList.toggle('hidden');
+        }
+
+        function handleReservation(e) {
+            e.preventDefault();
+            alert('Thank you! Your booking request for Da Ya Li Hawthorn East has been submitted. Our team will contact you shortly to confirm table availability.');
+            e.target.reset();
+        }
+
+        function submitDemoOrder() {
+            if (cart.length === 0) {
+                alert('Please add items to your estimator first.');
+                return;
+            }
+            toggleOrderCart();
+            document.getElementById('reservation').scrollIntoView();
+        }
+
+        // Initialize Menu View
+        window.onload = function() {
+            switchTab('duck');
+        };
+    </script>
+</body>
+</html>
