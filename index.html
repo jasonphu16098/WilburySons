@@ -1,0 +1,972 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Wilbury & Sons | Moorabbin's Favourite Neighbourhood Bar & Kitchen</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- FontAwesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google Fonts: Vintage & Retro Typography -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;700;900&family=DM+Sans:ital,wght@0,400;0,500;0,700;1,400&family=Playfair+Display:ital,wght@0,600;0,800;1,400&display=swap" rel="stylesheet">
+
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        amber: {
+                            400: '#fbbf24',
+                            500: '#f59e0b',
+                            600: '#d97706',
+                        },
+                        vintage: {
+                            dark: '#0f0a07',
+                            card: '#1a110c',
+                            border: '#3a2519',
+                            burgundy: '#4a121a',
+                            burgundyLight: '#6d1d29',
+                            gold: '#d4af37',
+                            goldHover: '#f3e5ab',
+                            wood: '#2b1a10',
+                            cream: '#f8f4e9',
+                            amberGlow: '#ff8c00'
+                        }
+                    },
+                    fontFamily: {
+                        retro: ['Cinzel', 'serif'],
+                        serif: ['Playfair Display', 'serif'],
+                        sans: ['DM Sans', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        body {
+            background-color: #0f0a07;
+            color: #f8f4e9;
+            font-family: 'DM Sans', sans-serif;
+            background-image: radial-gradient(rgba(212, 175, 55, 0.05) 1px, transparent 1px);
+            background-size: 32px 32px;
+        }
+
+        .gold-gradient-text {
+            background: linear-gradient(135deg, #f3e5ab 0%, #d4af37 50%, #aa7c11 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .gold-border {
+            border-image: linear-gradient(to bottom right, #d4af37, #4a121a, #d4af37) 1;
+        }
+
+        .vinyl-record {
+            box-shadow: 0 0 25px rgba(0,0,0,0.8), inset 0 0 15px rgba(255,255,255,0.1);
+            animation: spin 20s linear infinite;
+        }
+        .vinyl-paused {
+            animation-play-state: paused;
+        }
+
+        @keyframes spin {
+            100% { transform: rotate(360deg); }
+        }
+
+        .studio-knob {
+            box-shadow: inset 0 2px 4px rgba(255,255,255,0.2), 0 4px 8px rgba(0,0,0,0.8);
+        }
+
+        /* Glassmorphism Retro Style */
+        .glass-panel {
+            background: rgba(26, 17, 12, 0.85);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(212, 175, 55, 0.15);
+        }
+
+        .glass-card {
+            background: rgba(43, 26, 16, 0.6);
+            backdrop-filter: blur(8px);
+            border: 1px solid rgba(212, 175, 55, 0.1);
+        }
+
+        /* Scrollbar styling */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #0f0a07;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #3a2519;
+            border-radius: 4px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #d4af37;
+        }
+    </style>
+</head>
+<body class="selection:bg-vintage-burgundy selection:text-vintage-gold">
+
+    <!-- HEADER & NAVIGATION -->
+    <header class="fixed top-0 left-0 w-full z-40 transition-all duration-300 glass-panel border-b border-vintage-border/50" id="navbar">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
+            <!-- Brand Logo -->
+            <a href="#" class="flex items-center space-x-3 group">
+                <div class="w-10 h-10 rounded-full bg-vintage-burgundy border border-vintage-gold flex items-center justify-center text-vintage-gold group-hover:scale-105 transition-transform">
+                    <i class="fa-solid font-retro text-lg font-bold">W</i>
+                </div>
+                <div>
+                    <span class="font-retro text-xl font-bold tracking-wider text-vintage-cream block leading-none">WILBURY <span class="text-vintage-gold">&amp;</span> SONS</span>
+                    <span class="text-[10px] tracking-widest text-amber-500 uppercase font-sans font-semibold">Moorabbin • EST 2018</span>
+                </div>
+            </a>
+
+            <!-- Desktop Menu Navigation -->
+            <nav class="hidden md:flex items-center space-x-8 text-sm font-medium uppercase tracking-wider text-vintage-cream/80">
+                <a href="#about" class="hover:text-vintage-gold transition-colors">About</a>
+                <a href="#specials" class="hover:text-vintage-gold transition-colors">Specials</a>
+                <a href="#menu" class="hover:text-vintage-gold transition-colors">Food &amp; Drink</a>
+                <a href="#gigs" class="hover:text-vintage-gold transition-colors flex items-center gap-1.5">
+                    <span class="inline-block w-2 h-2 rounded-full bg-red-500 animate-pulse"></span> Gigs
+                </a>
+                <a href="#functions" class="hover:text-vintage-gold transition-colors">Functions</a>
+                <a href="#gallery" class="hover:text-vintage-gold transition-colors">Gallery</a>
+                <a href="#contact" class="hover:text-vintage-gold transition-colors">Contact</a>
+            </nav>
+
+            <!-- Book Table CTA -->
+            <div class="hidden md:flex items-center space-x-4">
+                <button onclick="openBookingModal()" class="px-5 py-2.5 rounded-full bg-vintage-burgundy hover:bg-vintage-burgundyLight text-vintage-gold border border-vintage-gold/50 font-retro text-xs tracking-widest uppercase transition-all shadow-lg hover:shadow-vintage-gold/20 flex items-center gap-2">
+                    <i class="fa-solid fa-utensils"></i> Reserve Table
+                </button>
+            </div>
+
+            <!-- Mobile menu button -->
+            <button id="mobile-menu-btn" class="md:hidden text-vintage-gold focus:outline-none p-2" aria-label="Toggle Menu">
+                <i class="fa-solid fa-bars text-2xl"></i>
+            </button>
+        </div>
+
+        <!-- Mobile Navigation Menu -->
+        <div id="mobile-menu" class="hidden md:hidden glass-panel border-t border-vintage-border px-6 py-6 space-y-4">
+            <a href="#about" class="mobile-link block text-lg font-retro text-vintage-cream hover:text-vintage-gold">About Us</a>
+            <a href="#specials" class="mobile-link block text-lg font-retro text-vintage-cream hover:text-vintage-gold">Weekly Specials</a>
+            <a href="#menu" class="mobile-link block text-lg font-retro text-vintage-cream hover:text-vintage-gold">Food &amp; Drink Menu</a>
+            <a href="#gigs" class="mobile-link block text-lg font-retro text-vintage-cream hover:text-vintage-gold">Live Music &amp; Gigs</a>
+            <a href="#functions" class="mobile-link block text-lg font-retro text-vintage-cream hover:text-vintage-gold">Functions &amp; Events</a>
+            <a href="#gallery" class="mobile-link block text-lg font-retro text-vintage-cream hover:text-vintage-gold">Photo Gallery</a>
+            <a href="#contact" class="mobile-link block text-lg font-retro text-vintage-cream hover:text-vintage-gold">Contact &amp; Hours</a>
+            <button onclick="openBookingModal(); toggleMobileMenu();" class="w-full mt-4 py-3 rounded-md bg-vintage-gold text-vintage-dark font-retro font-bold uppercase tracking-wider text-center">
+                Reserve Table Now
+            </button>
+        </div>
+    </header>
+
+    <!-- HERO SECTION -->
+    <section class="relative min-h-screen flex items-center justify-center pt-20 overflow-hidden">
+        <!-- Background Ambient Image with Overlay -->
+        <div class="absolute inset-0 z-0">
+            <img src="https://images.unsplash.com/photo-1514933651103-005eec06c04b?auto=format&fit=crop&w=1920&q=80" alt="Wilbury & Sons Atmosphere" class="w-full h-full object-cover object-center filter brightness-[0.35] contrast-125 scale-105 transition-transform duration-10000 hover:scale-100">
+            <div class="absolute inset-0 bg-gradient-to-t from-vintage-dark via-vintage-dark/60 to-transparent"></div>
+            <div class="absolute inset-0 bg-gradient-to-r from-vintage-dark/90 via-transparent to-vintage-dark/90"></div>
+        </div>
+
+        <div class="relative z-10 max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 text-center py-16">
+            <!-- Vintage Studio Badge -->
+            <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-vintage-burgundy/80 border border-vintage-gold/40 text-vintage-gold text-xs font-semibold uppercase tracking-widest mb-6 backdrop-blur-sm animate-pulse">
+                <i class="fa-solid fa-record-vinyl"></i> Moorabbin's Neighbourhood Pub &amp; Recording Studio Vibe
+            </div>
+
+            <h1 class="font-serif text-5xl md:text-7xl lg:text-8xl font-bold tracking-tight text-vintage-cream mb-6 leading-tight">
+                GOOD TIMES, <br>
+                <span class="gold-gradient-text italic font-normal">GREAT SOUNDS</span> &amp; TASTY EATS.
+            </h1>
+
+            <p class="max-w-2xl mx-auto text-lg md:text-xl text-vintage-cream/80 font-sans mb-10 leading-relaxed font-light">
+                Nestled right next to Moorabbin Station. Serving up artisan craft beers, vinyl-spun nostalgia, comfort food favourites, and local live acoustic acts.
+            </p>
+
+            <div class="flex flex-col sm:flex-row gap-4 justify-center items-center">
+                <button onclick="openBookingModal()" class="w-full sm:w-auto px-8 py-4 rounded-full bg-vintage-gold hover:bg-vintage-goldHover text-vintage-dark font-retro font-bold text-sm tracking-widest uppercase transition-all transform hover:-translate-y-0.5 shadow-xl shadow-vintage-gold/10 flex items-center justify-center gap-3">
+                    <i class="fa-regular fa-calendar-check text-lg"></i> Book A Table
+                </button>
+                <a href="#menu" class="w-full sm:w-auto px-8 py-4 rounded-full bg-vintage-card/80 hover:bg-vintage-wood text-vintage-cream border border-vintage-border font-retro font-bold text-sm tracking-widest uppercase transition-all backdrop-blur-sm flex items-center justify-center gap-2">
+                    <i class="fa-solid fa-utensils text-vintage-gold"></i> View Food Menu
+                </a>
+            </div>
+
+            <!-- Quick Bar Info Badges -->
+            <div class="mt-16 grid grid-cols-2 md:grid-cols-4 gap-4 text-center max-w-3xl mx-auto">
+                <div class="p-4 rounded-xl glass-card">
+                    <i class="fa-solid fa-location-dot text-vintage-gold text-xl mb-2"></i>
+                    <p class="text-xs text-vintage-cream/60 uppercase">Location</p>
+                    <p class="text-sm font-semibold text-vintage-cream">Shop 4, 6 Station St</p>
+                </div>
+                <div class="p-4 rounded-xl glass-card">
+                    <i class="fa-solid fa-beer-mug-empty text-vintage-gold text-xl mb-2"></i>
+                    <p class="text-xs text-vintage-cream/60 uppercase">Craft Tap Beer</p>
+                    <p class="text-sm font-semibold text-vintage-cream">12 Local Taps</p>
+                </div>
+                <div class="p-4 rounded-xl glass-card">
+                    <i class="fa-solid fa-music text-vintage-gold text-xl mb-2"></i>
+                    <p class="text-xs text-vintage-cream/60 uppercase">Live Music</p>
+                    <p class="text-sm font-semibold text-vintage-cream">Thu - Sun Nights</p>
+                </div>
+                <div class="p-4 rounded-xl glass-card">
+                    <i class="fa-solid fa-clock text-vintage-gold text-xl mb-2"></i>
+                    <p class="text-xs text-vintage-cream/60 uppercase">Open Today</p>
+                    <p class="text-sm font-semibold text-vintage-cream">4:00 PM till Late</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- RETRO VINYL PLAYER STICKY BANNER -->
+    <div class="bg-vintage-burgundy border-y border-vintage-gold/30 py-3 px-4 sticky top-20 z-30 shadow-2xl backdrop-blur-md">
+        <div class="max-w-7xl mx-auto flex flex-col md:flex-row items-center justify-between gap-4">
+            <div class="flex items-center gap-4">
+                <!-- Record Spin Icon -->
+                <div id="record-disk" class="w-10 h-10 rounded-full bg-black border-2 border-vintage-gold flex items-center justify-center vinyl-record relative flex-shrink-0">
+                    <div class="w-3 h-3 rounded-full bg-amber-500"></div>
+                </div>
+                <div>
+                    <span class="text-xs uppercase tracking-widest text-vintage-gold font-bold block">Now Spinning in the Lounge</span>
+                    <span id="current-track-title" class="text-sm text-vintage-cream font-serif italic">Fleetwood Mac - Dreams (1977 Studio Session)</span>
+                </div>
+            </div>
+
+            <div class="flex items-center gap-3">
+                <button id="play-btn" onclick="toggleAudio()" class="w-8 h-8 rounded-full bg-vintage-gold text-vintage-dark flex items-center justify-center hover:scale-105 transition-transform" aria-label="Play/Pause Audio">
+                    <i class="fa-solid fa-play text-xs"></i>
+                </button>
+                <button onclick="nextTrack()" class="text-vintage-cream/70 hover:text-vintage-gold text-sm px-2" title="Next Track">
+                    <i class="fa-solid fa-forward-step"></i>
+                </button>
+                <span class="text-xs font-mono text-vintage-cream/50 ml-2 hidden sm:inline">VINTAGE TAPE 7.5 IPS</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- ABOUT SECTION -->
+    <section id="about" class="py-24 relative overflow-hidden">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+                <!-- Visual Column with Stacked Vintage Photos -->
+                <div class="relative">
+                    <div class="relative z-10 rounded-2xl overflow-hidden border-2 border-vintage-border shadow-2xl">
+                        <img src="https://images.unsplash.com/photo-1572116469696-31de0f17cc34?auto=format&fit=crop&w=800&q=80" alt="Wilbury Interior Vibe" class="w-full h-[450px] object-cover filter contrast-110">
+                    </div>
+                    <!-- Secondary Accent Image -->
+                    <div class="absolute -bottom-8 -right-8 w-2/3 rounded-2xl overflow-hidden border-4 border-vintage-dark shadow-2xl z-20 hidden sm:block">
+                        <img src="https://images.unsplash.com/photo-1511671782779-c97d3d27a1d4?auto=format&fit=crop&w=600&q=80" alt="Live Music Atmosphere" class="w-full h-48 object-cover">
+                    </div>
+                    <!-- Retro Vinyl Badge floating -->
+                    <div class="absolute -top-6 -left-6 z-30 bg-vintage-burgundy text-vintage-gold p-4 rounded-2xl border border-vintage-gold/40 shadow-xl hidden sm:flex items-center gap-3">
+                        <i class="fa-solid fa-sliders text-2xl"></i>
+                        <div>
+                            <p class="text-xs font-retro uppercase font-bold">Analog Acoustic</p>
+                            <p class="text-[10px] text-vintage-cream/80">Warm Studio Acoustics</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Text Content Column -->
+                <div class="space-y-6">
+                    <div class="inline-block px-3 py-1 rounded bg-vintage-wood border border-vintage-border text-vintage-gold text-xs font-retro tracking-widest uppercase">
+                        Welcome To Moorabbin
+                    </div>
+                    <h2 class="font-serif text-4xl md:text-5xl font-bold text-vintage-cream leading-tight">
+                        A Warm Homage to 1970s Music Culture &amp; Great Hospitality.
+                    </h2>
+                    <p class="text-vintage-cream/80 leading-relaxed text-base">
+                        Wilbury &amp; Sons is Moorabbin's go-to neighbourhood bar and kitchen. Inspired by classic recording studios of the 70s—warm timber, plush leather, cozy lighting, and genuine vinyl sound—we're built on three simple principles: <strong class="text-vintage-gold">exceptional drinks, soul-nourishing food, and heartfelt live music</strong>.
+                    </p>
+                    <p class="text-vintage-cream/70 leading-relaxed text-sm">
+                        Located right in the heart of Station Street, whether you're dropping in for a knock-off pint after work, sharing tapas plates with old friends, or catching the finest local songwriters, Wilbury feels like home.
+                    </p>
+
+                    <!-- Feature Highlights -->
+                    <div class="grid grid-cols-2 gap-4 pt-4">
+                        <div class="flex items-start gap-3">
+                            <i class="fa-solid fa-circle-check text-vintage-gold text-lg mt-1"></i>
+                            <div>
+                                <h4 class="font-bold text-vintage-cream text-sm">Dog Friendly Courtyard</h4>
+                                <p class="text-xs text-vintage-cream/60">Relaxed outdoor seating</p>
+                            </div>
+                        </div>
+                        <div class="flex items-start gap-3">
+                            <i class="fa-solid fa-circle-check text-vintage-gold text-lg mt-1"></i>
+                            <div>
+                                <h4 class="font-bold text-vintage-cream text-sm">Rotating Craft Taps</h4>
+                                <p class="text-xs text-vintage-cream/60">Best Victorian Microbreweries</p>
+                            </div>
+                        </div>
+                        <div class="flex items-start gap-3">
+                            <i class="fa-solid fa-circle-check text-vintage-gold text-lg mt-1"></i>
+                            <div>
+                                <h4 class="font-bold text-vintage-cream text-sm">No Cover Charge</h4>
+                                <p class="text-xs text-vintage-cream/60">Free entry for live shows</p>
+                            </div>
+                        </div>
+                        <div class="flex items-start gap-3">
+                            <i class="fa-solid fa-circle-check text-vintage-gold text-lg mt-1"></i>
+                            <div>
+                                <h4 class="font-bold text-vintage-cream text-sm">Function Space</h4>
+                                <p class="text-xs text-vintage-cream/60">Private parties up to 120 guests</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- WEEKLY SPECIALS -->
+    <section id="specials" class="py-20 bg-vintage-card/60 border-y border-vintage-border relative">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-2xl mx-auto mb-16">
+                <span class="text-vintage-gold font-retro text-xs uppercase tracking-widest block mb-2">Neighborhood Deals</span>
+                <h2 class="font-serif text-4xl font-bold text-vintage-cream">Weekly Specials &amp; Happy Hours</h2>
+                <p class="text-vintage-cream/70 text-sm mt-2">Join us during the week for our chef and bartender curated specials.</p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+                <!-- Wednesday -->
+                <div class="glass-panel p-6 rounded-2xl border border-vintage-border hover:border-vintage-gold/50 transition-all group">
+                    <div class="w-12 h-12 rounded-xl bg-vintage-burgundy flex items-center justify-center text-vintage-gold text-xl mb-4 group-hover:scale-110 transition-transform">
+                        <i class="fa-solid fa-drumstick-bite"></i>
+                    </div>
+                    <span class="text-xs font-mono text-vintage-gold uppercase">Every Wednesday</span>
+                    <h3 class="font-serif text-xl font-bold text-vintage-cream mt-1 mb-2">Parmaggedon Night</h3>
+                    <p class="text-xs text-vintage-cream/70 mb-4">Hand-crumbed chicken schnitzel with house napoli &amp; mozzarella, served with seasoned chips &amp; salad + free pot of craft beer.</p>
+                    <div class="text-lg font-bold text-vintage-gold font-retro">$22.00</div>
+                </div>
+
+                <!-- Thursday -->
+                <div class="glass-panel p-6 rounded-2xl border border-vintage-border hover:border-vintage-gold/50 transition-all group">
+                    <div class="w-12 h-12 rounded-xl bg-vintage-burgundy flex items-center justify-center text-vintage-gold text-xl mb-4 group-hover:scale-110 transition-transform">
+                        <i class="fa-solid fa-burger"></i>
+                    </div>
+                    <span class="text-xs font-mono text-vintage-gold uppercase">Every Thursday</span>
+                    <h3 class="font-serif text-xl font-bold text-vintage-cream mt-1 mb-2">Burger &amp; Pint Night</h3>
+                    <p class="text-xs text-vintage-cream/70 mb-4">Choice of Wilbury Beef Cheeseburger or Southern Fried Mushroom burger with any tap beer or house wine.</p>
+                    <div class="text-lg font-bold text-vintage-gold font-retro">$24.00</div>
+                </div>
+
+                <!-- Friday -->
+                <div class="glass-panel p-6 rounded-2xl border border-vintage-border hover:border-vintage-gold/50 transition-all group">
+                    <div class="w-12 h-12 rounded-xl bg-vintage-burgundy flex items-center justify-center text-vintage-gold text-xl mb-4 group-hover:scale-110 transition-transform">
+                        <i class="fa-solid fa-martini-glass-citrus"></i>
+                    </div>
+                    <span class="text-xs font-mono text-vintage-gold uppercase">Fri &amp; Sat (4-6 PM)</span>
+                    <h3 class="font-serif text-xl font-bold text-vintage-cream mt-1 mb-2">Studio Happy Hour</h3>
+                    <p class="text-xs text-vintage-cream/70 mb-4">$8 Craft House Pints, $12 Signature Studio Cocktails, and $7 House Spirits &amp; Wines to kickstart your weekend.</p>
+                    <div class="text-lg font-bold text-vintage-gold font-retro">From $7.00</div>
+                </div>
+
+                <!-- Sunday -->
+                <div class="glass-panel p-6 rounded-2xl border border-vintage-border hover:border-vintage-gold/50 transition-all group">
+                    <div class="w-12 h-12 rounded-xl bg-vintage-burgundy flex items-center justify-center text-vintage-gold text-xl mb-4 group-hover:scale-110 transition-transform">
+                        <i class="fa-solid fa-guitar"></i>
+                    </div>
+                    <span class="text-xs font-mono text-vintage-gold uppercase">Every Sunday (3 PM)</span>
+                    <h3 class="font-serif text-xl font-bold text-vintage-cream mt-1 mb-2">Sunday Acoustic Sessions</h3>
+                    <p class="text-xs text-vintage-cream/70 mb-4">Relaxed live local acoustic artists, $15 Bloody Marys &amp; Espresso Martinis all afternoon long.</p>
+                    <div class="text-lg font-bold text-vintage-gold font-retro">Free Entry</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- MENU SECTION -->
+    <section id="menu" class="py-24 relative">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-3xl mx-auto mb-12">
+                <span class="text-vintage-gold font-retro text-xs uppercase tracking-widest block mb-2">Kitchen &amp; Bar</span>
+                <h2 class="font-serif text-4xl md:text-5xl font-bold text-vintage-cream">Food &amp; Libations</h2>
+                <p class="text-vintage-cream/70 text-sm mt-3">Hearty pub staples, sharing plates, vegan offerings, and handcrafted studio cocktails.</p>
+                
+                <!-- Category Filter Buttons -->
+                <div class="flex flex-wrap justify-center gap-3 mt-8" id="menu-filters">
+                    <button onclick="filterMenu('all')" class="menu-filter-btn px-5 py-2 rounded-full text-xs font-retro uppercase tracking-wider bg-vintage-gold text-vintage-dark font-bold transition-all" data-category="all">
+                        All Items
+                    </button>
+                    <button onclick="filterMenu('bites')" class="menu-filter-btn px-5 py-2 rounded-full text-xs font-retro uppercase tracking-wider bg-vintage-wood text-vintage-cream hover:bg-vintage-burgundy transition-all border border-vintage-border" data-category="bites">
+                        Small Bites &amp; Shares
+                    </button>
+                    <button onclick="filterMenu('mains')" class="menu-filter-btn px-5 py-2 rounded-full text-xs font-retro uppercase tracking-wider bg-vintage-wood text-vintage-cream hover:bg-vintage-burgundy transition-all border border-vintage-border" data-category="mains">
+                        Pub Classics &amp; Mains
+                    </button>
+                    <button onclick="filterMenu('cocktails')" class="menu-filter-btn px-5 py-2 rounded-full text-xs font-retro uppercase tracking-wider bg-vintage-wood text-vintage-cream hover:bg-vintage-burgundy transition-all border border-vintage-border" data-category="cocktails">
+                        Studio Cocktails
+                    </button>
+                    <button onclick="filterMenu('beers')" class="menu-filter-btn px-5 py-2 rounded-full text-xs font-retro uppercase tracking-wider bg-vintage-wood text-vintage-cream hover:bg-vintage-burgundy transition-all border border-vintage-border" data-category="beers">
+                        Tap Beer &amp; Wine
+                    </button>
+                </div>
+            </div>
+
+            <!-- Menu Grid Container -->
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8" id="menu-grid">
+                <!-- Small Bites -->
+                <div class="menu-item glass-card p-6 rounded-2xl flex justify-between items-start border border-vintage-border hover:border-vintage-gold/40 transition-all" data-cat="bites">
+                    <div class="pr-4">
+                        <div class="flex items-center gap-2">
+                            <h3 class="font-serif text-xl font-bold text-vintage-cream">Wilbury Jalapeño Poppers</h3>
+                            <span class="text-[10px] bg-amber-500/20 text-amber-400 px-2 py-0.5 rounded font-mono uppercase">V / Spicy</span>
+                        </div>
+                        <p class="text-xs text-vintage-cream/70 mt-2">Cream cheese &amp; sharp cheddar stuffed pickled jalapeños with chipotle mayo dipping sauce.</p>
+                    </div>
+                    <span class="text-lg font-bold font-retro text-vintage-gold">$16.00</span>
+                </div>
+
+                <div class="menu-item glass-card p-6 rounded-2xl flex justify-between items-start border border-vintage-border hover:border-vintage-gold/40 transition-all" data-cat="bites">
+                    <div class="pr-4">
+                        <div class="flex items-center gap-2">
+                            <h3 class="font-serif text-xl font-bold text-vintage-cream">Sticky Honey Soy Chicken Wings</h3>
+                            <span class="text-[10px] bg-red-500/20 text-red-400 px-2 py-0.5 rounded font-mono uppercase">GF</span>
+                        </div>
+                        <p class="text-xs text-vintage-cream/70 mt-2">1/2kg twice-cooked wings tossed in ginger, garlic, sesame &amp; honey soy glaze.</p>
+                    </div>
+                    <span class="text-lg font-bold font-retro text-vintage-gold">$18.50</span>
+                </div>
+
+                <!-- Mains -->
+                <div class="menu-item glass-card p-6 rounded-2xl flex justify-between items-start border border-vintage-border hover:border-vintage-gold/40 transition-all" data-cat="mains">
+                    <div class="pr-4">
+                        <div class="flex items-center gap-2">
+                            <h3 class="font-serif text-xl font-bold text-vintage-cream">The Studio Double Cheeseburger</h3>
+                            <span class="text-[10px] bg-yellow-500/20 text-yellow-400 px-2 py-0.5 rounded font-mono uppercase">House Fav</span>
+                        </div>
+                        <p class="text-xs text-vintage-cream/70 mt-2">Dual smash beef patties, double American cheddar, bread &amp; butter pickles, secret sauce on toasted brioche with beer-battered chips.</p>
+                    </div>
+                    <span class="text-lg font-bold font-retro text-vintage-gold">$24.00</span>
+                </div>
+
+                <div class="menu-item glass-card p-6 rounded-2xl flex justify-between items-start border border-vintage-border hover:border-vintage-gold/40 transition-all" data-cat="mains">
+                    <div class="pr-4">
+                        <div class="flex items-center gap-2">
+                            <h3 class="font-serif text-xl font-bold text-vintage-cream">Classic Chicken Parma</h3>
+                        </div>
+                        <p class="text-xs text-vintage-cream/70 mt-2">Free-range chicken breast schnitzel, smoked ham, house tomato napoli sauce, melted mozzarella, steak fries &amp; garden salad.</p>
+                    </div>
+                    <span class="text-lg font-bold font-retro text-vintage-gold">$26.50</span>
+                </div>
+
+                <div class="menu-item glass-card p-6 rounded-2xl flex justify-between items-start border border-vintage-border hover:border-vintage-gold/40 transition-all" data-cat="mains">
+                    <div class="pr-4">
+                        <div class="flex items-center gap-2">
+                            <h3 class="font-serif text-xl font-bold text-vintage-cream">Beer-Battered Flathead Tails</h3>
+                        </div>
+                        <p class="text-xs text-vintage-cream/70 mt-2">Crispy Coopers pale ale battered local flathead, house tartar sauce, lemon cheeks &amp; seasoned fries.</p>
+                    </div>
+                    <span class="text-lg font-bold font-retro text-vintage-gold">$27.00</span>
+                </div>
+
+                <!-- Cocktails -->
+                <div class="menu-item glass-card p-6 rounded-2xl flex justify-between items-start border border-vintage-border hover:border-vintage-gold/40 transition-all" data-cat="cocktails">
+                    <div class="pr-4">
+                        <div class="flex items-center gap-2">
+                            <h3 class="font-serif text-xl font-bold text-vintage-cream">Abbey Road Old Fashioned</h3>
+                        </div>
+                        <p class="text-xs text-vintage-cream/70 mt-2">Bourbon whiskey, black walnut bitters, dark maple syrup, garnished with charred orange peel &amp; maraschino cherry.</p>
+                    </div>
+                    <span class="text-lg font-bold font-retro text-vintage-gold">$21.00</span>
+                </div>
+
+                <div class="menu-item glass-card p-6 rounded-2xl flex justify-between items-start border border-vintage-border hover:border-vintage-gold/40 transition-all" data-cat="cocktails">
+                    <div class="pr-4">
+                        <div class="flex items-center gap-2">
+                            <h3 class="font-serif text-xl font-bold text-vintage-cream">Velvet Underground Sour</h3>
+                        </div>
+                        <p class="text-xs text-vintage-cream/70 mt-2">Empress 1908 Gin, fresh lemon juice, simple syrup, egg white float &amp; lavender mist.</p>
+                    </div>
+                    <span class="text-lg font-bold font-retro text-vintage-gold">$22.00</span>
+                </div>
+
+                <!-- Beers -->
+                <div class="menu-item glass-card p-6 rounded-2xl flex justify-between items-start border border-vintage-border hover:border-vintage-gold/40 transition-all" data-cat="beers">
+                    <div class="pr-4">
+                        <div class="flex items-center gap-2">
+                            <h3 class="font-serif text-xl font-bold text-vintage-cream">2 Brothers 'Kung Fu' Rice Lager (Tap)</h3>
+                        </div>
+                        <p class="text-xs text-vintage-cream/70 mt-2">Moorabbin Local Brewery • Ultra crisp, dry, and super refreshing lager.</p>
+                    </div>
+                    <span class="text-lg font-bold font-retro text-vintage-gold">$13.50 Pint</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- GIG GUIDE SECTION -->
+    <section id="gigs" class="py-24 bg-vintage-dark relative overflow-hidden border-t border-vintage-border">
+        <!-- Ambient Recording Studio Light decorative effect -->
+        <div class="absolute top-0 right-10 w-72 h-72 bg-vintage-burgundy/20 rounded-full blur-3xl pointer-events-none"></div>
+
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            <div class="flex flex-col md:flex-row md:items-end justify-between mb-16">
+                <div>
+                    <div class="inline-flex items-center gap-2 text-red-500 font-mono text-xs uppercase font-bold tracking-widest mb-2">
+                        <span class="w-2 h-2 rounded-full bg-red-500 animate-ping"></span> Live &amp; Loud
+                    </div>
+                    <h2 class="font-serif text-4xl md:text-5xl font-bold text-vintage-cream">Gig Guide &amp; Events</h2>
+                    <p class="text-vintage-cream/70 text-sm mt-2">Free live performances from Melbourne's best acoustic talent and vinyl DJs.</p>
+                </div>
+                <div class="mt-4 md:mt-0">
+                    <button onclick="openBookingModal()" class="px-6 py-3 rounded-full bg-vintage-burgundy hover:bg-vintage-burgundyLight text-vintage-gold border border-vintage-gold/30 font-retro text-xs tracking-wider uppercase">
+                        Book a Table for a Show
+                    </button>
+                </div>
+            </div>
+
+            <!-- Gig Cards Grid -->
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <!-- Gig 1 -->
+                <div class="glass-panel rounded-2xl overflow-hidden border border-vintage-border hover:border-vintage-gold/50 transition-all flex flex-col justify-between group">
+                    <div>
+                        <div class="relative h-48 overflow-hidden">
+                            <img src="https://images.unsplash.com/photo-1511671782779-c97d3d27a1d4?auto=format&fit=crop&w=600&q=80" alt="Acoustic Session" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+                            <div class="absolute top-3 left-3 bg-vintage-burgundy text-vintage-gold font-retro text-xs px-3 py-1 rounded-full border border-vintage-gold/30">
+                                THIS THURSDAY
+                            </div>
+                        </div>
+                        <div class="p-6">
+                            <span class="text-xs font-mono text-vintage-gold">8:00 PM - 11:00 PM</span>
+                            <h3 class="font-serif text-2xl font-bold text-vintage-cream mt-1 mb-2">The Folk &amp; Blues Session</h3>
+                            <p class="text-xs text-vintage-cream/70 leading-relaxed mb-4">Acoustic indie blues covers and raw originals featuring local songwriter Sam Jennings.</p>
+                        </div>
+                    </div>
+                    <div class="px-6 pb-6 pt-0 flex justify-between items-center text-xs text-vintage-cream/60 border-t border-vintage-border/40 pt-4">
+                        <span><i class="fa-solid fa-ticket text-vintage-gold mr-1"></i> Free Entry</span>
+                        <a href="#contact" class="text-vintage-gold font-bold hover:underline">Details &rarr;</a>
+                    </div>
+                </div>
+
+                <!-- Gig 2 -->
+                <div class="glass-panel rounded-2xl overflow-hidden border border-vintage-border hover:border-vintage-gold/50 transition-all flex flex-col justify-between group">
+                    <div>
+                        <div class="relative h-48 overflow-hidden">
+                            <img src="https://images.unsplash.com/photo-1470225620780-dba8ba36b745?auto=format&fit=crop&w=600&q=80" alt="Vinyl Night" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+                            <div class="absolute top-3 left-3 bg-vintage-burgundy text-vintage-gold font-retro text-xs px-3 py-1 rounded-full border border-vintage-gold/30">
+                                THIS FRIDAY
+                            </div>
+                        </div>
+                        <div class="p-6">
+                            <span class="text-xs font-mono text-vintage-gold">7:30 PM - LATE</span>
+                            <h3 class="font-serif text-2xl font-bold text-vintage-cream mt-1 mb-2">70s Rock &amp; Funk Vinyl DJ</h3>
+                            <p class="text-xs text-vintage-cream/70 leading-relaxed mb-4">Spinning rare 45s, classic Motown, David Bowie, Led Zeppelin, and funk soul anthems all night.</p>
+                        </div>
+                    </div>
+                    <div class="px-6 pb-6 pt-0 flex justify-between items-center text-xs text-vintage-cream/60 border-t border-vintage-border/40 pt-4">
+                        <span><i class="fa-solid fa-ticket text-vintage-gold mr-1"></i> Free Entry</span>
+                        <a href="#contact" class="text-vintage-gold font-bold hover:underline">Details &rarr;</a>
+                    </div>
+                </div>
+
+                <!-- Gig 3 -->
+                <div class="glass-panel rounded-2xl overflow-hidden border border-vintage-border hover:border-vintage-gold/50 transition-all flex flex-col justify-between group">
+                    <div>
+                        <div class="relative h-48 overflow-hidden">
+                            <img src="https://images.unsplash.com/photo-1465847899084-d164df4dedc6?auto=format&fit=crop&w=600&q=80" alt="Sunday Session" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+                            <div class="absolute top-3 left-3 bg-vintage-burgundy text-vintage-gold font-retro text-xs px-3 py-1 rounded-full border border-vintage-gold/30">
+                                SUNDAY SESSION
+                            </div>
+                        </div>
+                        <div class="p-6">
+                            <span class="text-xs font-mono text-vintage-gold">3:00 PM - 6:00 PM</span>
+                            <h3 class="font-serif text-2xl font-bold text-vintage-cream mt-1 mb-2">Sunday Soul &amp; Cocktails</h3>
+                            <p class="text-xs text-vintage-cream/70 leading-relaxed mb-4">Chilled soul tunes in the courtyard with discount bloody marys and artisan burgers.</p>
+                        </div>
+                    </div>
+                    <div class="px-6 pb-6 pt-0 flex justify-between items-center text-xs text-vintage-cream/60 border-t border-vintage-border/40 pt-4">
+                        <span><i class="fa-solid fa-ticket text-vintage-gold mr-1"></i> Free Entry</span>
+                        <a href="#contact" class="text-vintage-gold font-bold hover:underline">Details &rarr;</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- PRIVATE FUNCTIONS SECTION -->
+    <section id="functions" class="py-24 bg-vintage-card/40 relative">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+                <div>
+                    <span class="text-vintage-gold font-retro text-xs uppercase tracking-widest block mb-2">Private Events</span>
+                    <h2 class="font-serif text-4xl md:text-5xl font-bold text-vintage-cream mb-6">Host Your Next Event At Wilbury.</h2>
+                    <p class="text-vintage-cream/80 text-base leading-relaxed mb-6">
+                        Looking for a unique venue with character, outstanding acoustics, and tailored food packages? From birthday celebrations and engagement parties to corporate mixers, our team will make your event unforgettable.
+                    </p>
+
+                    <div class="space-y-4 mb-8">
+                        <div class="flex items-center gap-4 p-3 rounded-xl bg-vintage-wood/50 border border-vintage-border">
+                            <div class="w-10 h-10 rounded-lg bg-vintage-burgundy flex items-center justify-center text-vintage-gold flex-shrink-0">
+                                <i class="fa-solid fa-users"></i>
+                            </div>
+                            <div>
+                                <h4 class="text-sm font-bold text-vintage-cream">Flexible Capacity</h4>
+                                <p class="text-xs text-vintage-cream/60">Catering for intimate gatherings of 20 up to full venue hire for 120 guests.</p>
+                            </div>
+                        </div>
+
+                        <div class="flex items-center gap-4 p-3 rounded-xl bg-vintage-wood/50 border border-vintage-border">
+                            <div class="w-10 h-10 rounded-lg bg-vintage-burgundy flex items-center justify-center text-vintage-gold flex-shrink-0">
+                                <i class="fa-solid fa-sliders"></i>
+                            </div>
+                            <div>
+                                <h4 class="text-sm font-bold text-vintage-cream">Custom Sound &amp; DJ Setup</h4>
+                                <p class="text-xs text-vintage-cream/60">Full AV gear, microphone, and vinyl DJ turntable setup included.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Function Enquiry Form -->
+                <div class="glass-panel p-8 rounded-3xl border border-vintage-border shadow-2xl relative">
+                    <h3 class="font-serif text-2xl font-bold text-vintage-cream mb-2">Function Enquiry</h3>
+                    <p class="text-xs text-vintage-cream/60 mb-6">Fill in your details and our events coordinator will get back to you within 24 hours.</p>
+
+                    <form id="function-form" onsubmit="handleFunctionSubmit(event)" class="space-y-4">
+                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                            <div>
+                                <label class="block text-xs uppercase font-retro text-vintage-cream/70 mb-1">Your Name *</label>
+                                <input type="text" required placeholder="John Doe" class="w-full px-4 py-3 rounded-xl bg-vintage-dark border border-vintage-border text-vintage-cream focus:border-vintage-gold focus:outline-none text-sm">
+                            </div>
+                            <div>
+                                <label class="block text-xs uppercase font-retro text-vintage-cream/70 mb-1">Email Address *</label>
+                                <input type="email" required placeholder="john@example.com" class="w-full px-4 py-3 rounded-xl bg-vintage-dark border border-vintage-border text-vintage-cream focus:border-vintage-gold focus:outline-none text-sm">
+                            </div>
+                        </div>
+
+                        <div class="grid grid-cols-1 sm:grid-cols-3 gap-4">
+                            <div>
+                                <label class="block text-xs uppercase font-retro text-vintage-cream/70 mb-1">Phone *</label>
+                                <input type="tel" required placeholder="0400 000 000" class="w-full px-4 py-3 rounded-xl bg-vintage-dark border border-vintage-border text-vintage-cream focus:border-vintage-gold focus:outline-none text-sm">
+                            </div>
+                            <div>
+                                <label class="block text-xs uppercase font-retro text-vintage-cream/70 mb-1">Estimated Guests</label>
+                                <input type="number" min="10" max="120" placeholder="40" class="w-full px-4 py-3 rounded-xl bg-vintage-dark border border-vintage-border text-vintage-cream focus:border-vintage-gold focus:outline-none text-sm">
+                            </div>
+                            <div>
+                                <label class="block text-xs uppercase font-retro text-vintage-cream/70 mb-1">Preferred Date</label>
+                                <input type="date" class="w-full px-4 py-3 rounded-xl bg-vintage-dark border border-vintage-border text-vintage-cream focus:border-vintage-gold focus:outline-none text-sm">
+                            </div>
+                        </div>
+
+                        <div>
+                            <label class="block text-xs uppercase font-retro text-vintage-cream/70 mb-1">Event Notes &amp; Special Requests</label>
+                            <textarea rows="3" placeholder="Tell us about your event (Birthday, Corporate, Cocktail style, etc.)..." class="w-full px-4 py-3 rounded-xl bg-vintage-dark border border-vintage-border text-vintage-cream focus:border-vintage-gold focus:outline-none text-sm"></textarea>
+                        </div>
+
+                        <button type="submit" class="w-full py-4 rounded-xl bg-vintage-gold hover:bg-vintage-goldHover text-vintage-dark font-retro font-bold text-xs uppercase tracking-widest transition-all">
+                            Send Function Enquiry
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- PHOTO GALLERY SECTION -->
+    <section id="gallery" class="py-24 border-t border-vintage-border">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-2xl mx-auto mb-16">
+                <span class="text-vintage-gold font-retro text-xs uppercase tracking-widest block mb-2">Snapshots</span>
+                <h2 class="font-serif text-4xl font-bold text-vintage-cream">Atmosphere &amp; Memories</h2>
+                <p class="text-vintage-cream/70 text-sm mt-2">Take a peek inside our cozy nook in Moorabbin.</p>
+            </div>
+
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+                <div class="relative overflow-hidden rounded-2xl group cursor-pointer h-64 border border-vintage-border" onclick="openLightbox('https://images.unsplash.com/photo-1514933651103-005eec06c04b?auto=format&fit=crop&w=1200&q=80', 'The Bar Counter & Taps')">
+                    <img src="https://images.unsplash.com/photo-1514933651103-005eec06c04b?auto=format&fit=crop&w=600&q=80" alt="Gallery photo 1" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
+                    <div class="absolute inset-0 bg-gradient-to-t from-vintage-dark/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity flex items-end p-4">
+                        <span class="text-xs text-vintage-gold font-retro uppercase">The Bar Counter</span>
+                    </div>
+                </div>
+
+                <div class="relative overflow-hidden rounded-2xl group cursor-pointer h-64 border border-vintage-border" onclick="openLightbox('https://images.unsplash.com/photo-1572116469696-31de0f17cc34?auto=format&fit=crop&w=1200&q=80', 'Warm Vintage Booths')">
+                    <img src="https://images.unsplash.com/photo-1572116469696-31de0f17cc34?auto=format&fit=crop&w=600&q=80" alt="Gallery photo 2" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
+                    <div class="absolute inset-0 bg-gradient-to-t from-vintage-dark/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity flex items-end p-4">
+                        <span class="text-xs text-vintage-gold font-retro uppercase">Cozy Leather Booths</span>
+                    </div>
+                </div>
+
+                <div class="relative overflow-hidden rounded-2xl group cursor-pointer h-64 border border-vintage-border" onclick="openLightbox('https://images.unsplash.com/photo-1511671782779-c97d3d27a1d4?auto=format&fit=crop&w=1200&q=80', 'Live Music On Stage')">
+                    <img src="https://images.unsplash.com/photo-1511671782779-c97d3d27a1d4?auto=format&fit=crop&w=600&q=80" alt="Gallery photo 3" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
+                    <div class="absolute inset-0 bg-gradient-to-t from-vintage-dark/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity flex items-end p-4">
+                        <span class="text-xs text-vintage-gold font-retro uppercase">Live Stage Nights</span>
+                    </div>
+                </div>
+
+                <div class="relative overflow-hidden rounded-2xl group cursor-pointer h-64 border border-vintage-border" onclick="openLightbox('https://images.unsplash.com/photo-1551024709-8f23befc6f87?auto=format&fit=crop&w=1200&q=80', 'Craft Cocktails')">
+                    <img src="https://images.unsplash.com/photo-1551024709-8f23befc6f87?auto=format&fit=crop&w=600&q=80" alt="Gallery photo 4" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
+                    <div class="absolute inset-0 bg-gradient-to-t from-vintage-dark/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity flex items-end p-4">
+                        <span class="text-xs text-vintage-gold font-retro uppercase">Handcrafted Cocktails</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CONTACT & FOOTER SECTION -->
+    <footer id="contact" class="bg-vintage-card border-t border-vintage-border pt-20 pb-12 relative">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-12 mb-16">
+                <!-- Location Details -->
+                <div>
+                    <h3 class="font-serif text-2xl font-bold text-vintage-cream mb-4">Find Us</h3>
+                    <p class="text-vintage-cream/80 text-sm leading-relaxed mb-4">
+                        Shop 4, 6 Station Street<br>
+                        Moorabbin VIC 3189, Australia<br>
+                        <span class="text-xs text-vintage-cream/60 italic">(Right next to Moorabbin Train Station)</span>
+                    </p>
+                    <p class="text-vintage-gold font-mono text-sm mb-2">
+                        <i class="fa-solid fa-phone mr-2"></i> (03) 7014 9562
+                    </p>
+                    <p class="text-vintage-cream/80 text-sm">
+                        <i class="fa-solid fa-envelope mr-2 text-vintage-gold"></i> hello@wilburyandsons.com.au
+                    </p>
+                </div>
+
+                <!-- Opening Hours -->
+                <div>
+                    <h3 class="font-serif text-2xl font-bold text-vintage-cream mb-4">Opening Hours</h3>
+                    <ul class="space-y-2 text-sm text-vintage-cream/80">
+                        <li class="flex justify-between border-b border-vintage-border/40 pb-1">
+                            <span>Monday - Tuesday</span>
+                            <span class="text-vintage-cream/50">Closed</span>
+                        </li>
+                        <li class="flex justify-between border-b border-vintage-border/40 pb-1">
+                            <span>Wednesday - Thursday</span>
+                            <span class="text-vintage-gold font-semibold">4:00 PM - 10:00 PM</span>
+                        </li>
+                        <li class="flex justify-between border-b border-vintage-border/40 pb-1">
+                            <span>Friday - Saturday</span>
+                            <span class="text-vintage-gold font-semibold">3:00 PM - Midnight</span>
+                        </li>
+                        <li class="flex justify-between border-b border-vintage-border/40 pb-1">
+                            <span>Sunday</span>
+                            <span class="text-vintage-gold font-semibold">2:00 PM - 9:00 PM</span>
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- Socials & Map Link -->
+                <div>
+                    <h3 class="font-serif text-2xl font-bold text-vintage-cream mb-4">Connect With Us</h3>
+                    <p class="text-sm text-vintage-cream/70 mb-6">Follow our Instagram &amp; Facebook for daily specials, secret gigs, and tap takeovers.</p>
+                    
+                    <div class="flex gap-4 mb-6">
+                        <a href="https://www.instagram.com/wilburyandsons" target="_blank" class="w-12 h-12 rounded-full bg-vintage-wood border border-vintage-gold/30 flex items-center justify-center text-vintage-gold text-xl hover:bg-vintage-burgundy transition-all">
+                            <i class="fa-brands fa-instagram"></i>
+                        </a>
+                        <a href="https://www.facebook.com/wilburyandsons" target="_blank" class="w-12 h-12 rounded-full bg-vintage-wood border border-vintage-gold/30 flex items-center justify-center text-vintage-gold text-xl hover:bg-vintage-burgundy transition-all">
+                            <i class="fa-brands fa-facebook-f"></i>
+                        </a>
+                    </div>
+
+                    <a href="https://maps.google.com/?q=Shop+4,+6+Station+St,+Moorabbin+VIC+3189" target="_blank" class="inline-flex items-center gap-2 text-xs font-retro uppercase text-vintage-gold hover:underline">
+                        <i class="fa-solid fa-map-location-dot"></i> Get Directions on Google Maps &rarr;
+                    </a>
+                </div>
+            </div>
+
+            <div class="border-t border-vintage-border/50 pt-8 flex flex-col sm:flex-row justify-between items-center text-xs text-vintage-cream/50">
+                <p>&copy; 2026 Wilbury &amp; Sons. All rights reserved.</p>
+                <p class="mt-2 sm:mt-0 font-serif italic">"Moorabbin's Favourite Neighbourhood Pub"</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- RESERVATION MODAL -->
+    <div id="booking-modal" class="fixed inset-0 z-50 hidden flex items-center justify-center p-4 bg-black/80 backdrop-blur-md">
+        <div class="glass-panel w-full max-w-lg rounded-3xl p-8 border border-vintage-gold/40 relative shadow-2xl">
+            <button onclick="closeBookingModal()" class="absolute top-6 right-6 text-vintage-cream/60 hover:text-vintage-gold text-xl">
+                <i class="fa-solid fa-xmark"></i>
+            </button>
+
+            <div class="text-center mb-6">
+                <div class="w-12 h-12 rounded-full bg-vintage-burgundy border border-vintage-gold flex items-center justify-center text-vintage-gold mx-auto mb-3">
+                    <i class="fa-solid fa-utensils"></i>
+                </div>
+                <h3 class="font-serif text-2xl font-bold text-vintage-cream">Reserve A Table</h3>
+                <p class="text-xs text-vintage-cream/70 mt-1">Join us for drinks, dinner or live tunes.</p>
+            </div>
+
+            <form id="booking-form" onsubmit="handleBookingSubmit(event)" class="space-y-4">
+                <div>
+                    <label class="block text-xs uppercase font-retro text-vintage-cream/70 mb-1">Full Name *</label>
+                    <input type="text" required placeholder="Jane Smith" class="w-full px-4 py-3 rounded-xl bg-vintage-dark border border-vintage-border text-vintage-cream focus:border-vintage-gold focus:outline-none text-sm">
+                </div>
+
+                <div class="grid grid-cols-2 gap-4">
+                    <div>
+                        <label class="block text-xs uppercase font-retro text-vintage-cream/70 mb-1">Guests *</label>
+                        <select required class="w-full px-4 py-3 rounded-xl bg-vintage-dark border border-vintage-border text-vintage-cream focus:border-vintage-gold focus:outline-none text-sm">
+                            <option value="2">2 People</option>
+                            <option value="3">3 People</option>
+                            <option value="4">4 People</option>
+                            <option value="5">5 People</option>
+                            <option value="6+">6+ (Large Group)</option>
+                        </select>
+                    </div>
+                    <div>
+                        <label class="block text-xs uppercase font-retro text-vintage-cream/70 mb-1">Seating Preference</label>
+                        <select class="w-full px-4 py-3 rounded-xl bg-vintage-dark border border-vintage-border text-vintage-cream focus:border-vintage-gold focus:outline-none text-sm">
+                            <option value="main">Main Bar Lounge</option>
+                            <option value="booth">Cozy Vintage Booth</option>
+                            <option value="courtyard">Outdoor Courtyard</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="grid grid-cols-2 gap-4">
+                    <div>
+                        <label class="block text-xs uppercase font-retro text-vintage-cream/70 mb-1">Date *</label>
+                        <input type="date" required class="w-full px-4 py-3 rounded-xl bg-vintage-dark border border-vintage-border text-vintage-cream focus:border-vintage-gold focus:outline-none text-sm">
+                    </div>
+                    <div>
+                        <label class="block text-xs uppercase font-retro text-vintage-cream/70 mb-1">Time *</label>
+                        <select required class="w-full px-4 py-3 rounded-xl bg-vintage-dark border border-vintage-border text-vintage-cream focus:border-vintage-gold focus:outline-none text-sm">
+                            <option value="17:00">5:00 PM</option>
+                            <option value="18:30">6:30 PM</option>
+                            <option value="20:00">8:00 PM</option>
+                            <option value="21:30">9:30 PM</option>
+                        </select>
+                    </div>
+                </div>
+
+                <button type="submit" class="w-full py-4 rounded-xl bg-vintage-gold hover:bg-vintage-goldHover text-vintage-dark font-retro font-bold text-xs uppercase tracking-widest transition-all mt-4">
+                    Confirm Reservation Request
+                </button>
+            </form>
+        </div>
+    </div>
+
+    <!-- LIGHTBOX MODAL -->
+    <div id="lightbox-modal" class="fixed inset-0 z-50 hidden flex flex-col items-center justify-center p-4 bg-black/90 backdrop-blur-md" onclick="closeLightbox()">
+        <button class="absolute top-6 right-6 text-white text-3xl">&times;</button>
+        <img id="lightbox-img" src="" alt="Enlarged gallery view" class="max-w-4xl max-h-[80vh] rounded-2xl border border-vintage-gold/40 object-contain shadow-2xl">
+        <p id="lightbox-caption" class="text-vintage-gold font-retro text-sm mt-4 uppercase tracking-widest"></p>
+    </div>
+
+    <script>
+        // Mobile Menu Navigation Toggle
+        const mobileBtn = document.getElementById('mobile-menu-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+
+        mobileBtn.addEventListener('click', toggleMobileMenu);
+
+        function toggleMobileMenu() {
+            mobileMenu.classList.toggle('hidden');
+        }
+
+        document.querySelectorAll('.mobile-link').forEach(link => {
+            link.addEventListener('click', () => {
+                mobileMenu.classList.add('hidden');
+            });
+        });
+
+        // Booking Modal Controls
+        function openBookingModal() {
+            document.getElementById('booking-modal').classList.remove('hidden');
+        }
+
+        function closeBookingModal() {
+            document.getElementById('booking-modal').classList.add('hidden');
+        }
+
+        function handleBookingSubmit(e) {
+            e.preventDefault();
+            alert("Thank you! Your table reservation request for Wilbury & Sons has been received. We will send a confirmation SMS shortly.");
+            closeBookingModal();
+        }
+
+        function handleFunctionSubmit(e) {
+            e.preventDefault();
+            alert("Thank you for your event enquiry! Our events manager will contact you within 24 hours.");
+            e.target.reset();
+        }
+
+        // Menu Filtering Logic
+        function filterMenu(category) {
+            const buttons = document.querySelectorAll('.menu-filter-btn');
+            const items = document.querySelectorAll('.menu-item');
+
+            buttons.forEach(btn => {
+                if (btn.getAttribute('data-category') === category) {
+                    btn.classList.remove('bg-vintage-wood', 'text-vintage-cream');
+                    btn.classList.add('bg-vintage-gold', 'text-vintage-dark', 'font-bold');
+                } else {
+                    btn.classList.remove('bg-vintage-gold', 'text-vintage-dark', 'font-bold');
+                    btn.classList.add('bg-vintage-wood', 'text-vintage-cream');
+                }
+            });
+
+            items.forEach(item => {
+                if (category === 'all' || item.getAttribute('data-cat') === category) {
+                    item.style.display = 'flex';
+                } else {
+                    item.style.display = 'none';
+                }
+            });
+        }
+
+        // Lightbox Gallery Viewer
+        function openLightbox(src, caption) {
+            document.getElementById('lightbox-img').src = src;
+            document.getElementById('lightbox-caption').textContent = caption;
+            document.getElementById('lightbox-modal').classList.remove('hidden');
+        }
+
+        function closeLightbox() {
+            document.getElementById('lightbox-modal').classList.add('hidden');
+        }
+
+        // Audio Record Player Emulation Widget
+        const tracks = [
+            "Fleetwood Mac - Dreams (1977 Studio Session)",
+            "The Traveling Wilburys - Handle With Care",
+            "Tom Petty - Free Fallin' (Analog Cut)",
+            "Steely Dan - Peg (Studio Master 1977)"
+        ];
+        let currentTrackIdx = 0;
+        let isPlaying = false;
+
+        function toggleAudio() {
+            const playBtn = document.getElementById('play-btn');
+            const recordDisk = document.getElementById('record-disk');
+
+            isPlaying = !isPlaying;
+            if (isPlaying) {
+                playBtn.innerHTML = '<i class="fa-solid fa-pause text-xs"></i>';
+                recordDisk.classList.remove('vinyl-paused');
+            } else {
+                playBtn.innerHTML = '<i class="fa-solid fa-play text-xs"></i>';
+                recordDisk.classList.add('vinyl-paused');
+            }
+        }
+
+        function nextTrack() {
+            currentTrackIdx = (currentTrackIdx + 1) % tracks.length;
+            document.getElementById('current-track-title').textContent = tracks[currentTrackIdx];
+            if (!isPlaying) toggleAudio();
+        }
+
+        // Header shadow on scroll
+        window.addEventListener('scroll', () => {
+            const navbar = document.getElementById('navbar');
+            if (window.scrollY > 50) {
+                navbar.classList.add('shadow-2xl');
+            } else {
+                navbar.classList.remove('shadow-2xl');
+            }
+        });
+    </script>
+</body>
+</html>
